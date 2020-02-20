@@ -1,6 +1,6 @@
 
 <?php
-require('Database.php');
+
 
 /**
  * Description of Cart
@@ -19,18 +19,9 @@ class Cart {
      * adds a devices to the database 
      */
  }
+
 public function addCart($devices, $name) {
 
-
-    for($i=0; $i<$devices;$i++) {
-        $insert = "INSERT INTO 'cart' ('cartID', 'deviceID', 'name') VALUES (". $cartID .", ". $devices[$i] .", ". $name .")";
-        $params = array( 
-            "devices" => $devices,
-            "name" => $name,
-        );
-        $exporter = Database::getDbConnectiont();
-        $exporter->executeQuery($insert, $params);
-    }
 
 
     }
@@ -40,14 +31,10 @@ public function addCart($devices, $name) {
      * @param $cartID
      * searchs the typed cartID from the database
      */
-public function checkTotality($cartID) {
 
-    $select = "SELECT 'cartID', 'deviceID' FROM 'cart' WHERE 'cartID' = ". $cartID;
-    $params = array( 
-        "cardID" => $cartID,
-    );
-    $exporter = Database::getDbConnectiont();
-    $exporter->executeQuery($select, $params);
+     public function checkTotality($cartID) {
+
+  
 }
 
     /**
@@ -55,17 +42,9 @@ public function checkTotality($cartID) {
      * @param $cartID
      * delete the typed cartID from the database
      */
-public function deleteCart($cartID){
- 
-    $params = array(
-        "cardID" => $cartID,
-    );
-
-    $delete = "DELETE FROM 'cart' WHERE 'cartID' = ". $cartID;
-    $exporter = Database::getDbConnectiont();
-    $exporter->executeQuery($delete, $params);
-
-}
+    public function deleteCart($cartID){
+    
+    }
 
     /**
      * Modifies the database entry of the cart
@@ -74,19 +53,8 @@ public function deleteCart($cartID){
      * modifys the typed mType,device and name from the database
      */
 public function modifyCart($mType, $device, $name){ //Modifies the database entry of the cart
-    if($mType == "add") {
-        $modify = "INSERT INTO 'cart' ('cartID', 'deviceID', 'name') VALUES ( ". $cartID .", ". $devices .", ". $name .")";
-    }
-    else {
-        $modify = "DELETE FROM 'cart' WHERE 'devieID' = ". $deviceID;
-    }
-    $params = array( "mType" => $mType,
-        "device" => $device,
-        "name" => $name,
-    );
+   
 
-    $exporter = Database::getDbConnectiont();
-    $exporter->executeQuery($modify, $params);
+
 }
-
 }
